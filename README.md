@@ -27,11 +27,16 @@ cd test-fleamarket
 docker compose up -d --build
 ```
 
-MacのM1・M2チップのPCの場合、no matching manifest for linux/arm64/v8 in the manifest list entriesのメッセージが表示されビルドができないことがあります。 エラーが発生する場合は、docker-compose.ymlファイルの「mysql」内に「platform」の項目を追加で記載してください。
-mysql:
-    platform: linux/x86_64(この文追加)
-    image: mysql:8.0.26
-    environment:
+> [!WARNING]
+> **Mac (M1/M2チップ) をご利用の方へ**
+> ビルド時に `no matching manifest for linux/arm64/v8` というエラーが表示される場合は、`docker-compose.yml` の `mysql` 項目に `platform` 指定を追加してください。
+>
+> ```yaml
+> mysql:
+>     platform: linux/x86_64  # ←この行を追加
+>     image: mysql:8.0.26
+>     environment:
+> ```
 
 4. PHPコンテナに入る
 ```bash
@@ -103,19 +108,7 @@ php artisan db:seed
 - `seller2@example.com` / `password123`
 
 ## ER図
-
-```mermaid
-erDiagram
-    USERS ||--o{ ITEMS : "has many"
-    USERS ||--o{ LIKES : "has many"
-    USERS ||--o{ COMMENTS : "has many"
-    USERS ||--o{ PURCHASES : "has many"
-    ITEMS ||--o{ LIKES : "has many"
-    ITEMS ||--o{ COMMENTS : "has many"
-    ITEMS ||--|| PURCHASES : "has one"
-    ITEMS ||--o{ CATEGORY_ITEM : "has many"
-    CATEGORIES ||--o{ CATEGORY_ITEM : "has many"
-```
+![ER図](docs/index.drawio.png)
 
 ## 画面確認URL
 

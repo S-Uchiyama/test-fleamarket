@@ -1,0 +1,343 @@
+.item {
+    padding: 40px 0 80px;
+}
+
+.item__main {
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 40px;
+}
+
+.item__imageArea {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.item__image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.item__imageFrame {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.item__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.item__sold {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    background-color: #EA352C;
+    color: white;
+    font-size: 48px;
+    font-weight: bold;
+    padding: 8px 20px;
+    border-radius: 4px;
+    letter-spacing: 2px;
+}
+
+.item__info {
+    width: 100%;
+    max-width: 500px;
+    text-align: left;
+}
+
+.item__name {
+    font-size: 45px;
+    font-weight: 700;
+    height: 77px;
+    margin: 0 0 4px;
+}
+
+.item__brand {
+    font-size: 20px;
+    margin: 0 0 12px;
+    height: 28px;
+}
+
+.item__price {
+    font-size: 45px;
+    font-weight: 400;
+    margin: 0 0 42px;
+    height: 45px;
+}
+
+.item__priceTax {
+    font-size: 30px;
+    font-weight: 400;
+}
+
+.item__statusRow {
+    display: flex;
+    gap: 64px;
+    align-items: flex-start;
+}
+
+.item__status {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+}
+
+.item__icon {
+    font-size: 22px;
+    line-height: 1;
+}
+
+/* 画像アイコン 共通 */
+.item__iconImg {
+    width: 40px;
+    height: 40px;
+    display: block;
+}
+
+/* いいねボタン */
+.item__likeForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.item__likeBtn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.item__statusCount {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.item__actions {
+    margin-bottom: 26px;
+}
+
+.item__purchaseBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+    height: 56px;
+    background: #ff5555;
+    color: #fff;
+    border-radius: 4px;
+    font-size: 30px;
+    font-weight: 700;
+    text-decoration: none;
+    margin-top: 22px;
+}
+
+.item__section {
+    margin-top: 28px;
+}
+
+.item__sectionTitle {
+    font-size: 36px;
+    font-weight: 700;
+    margin: 0 0 10px;
+}
+
+.item__description {
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.8;
+}
+
+.item__spec {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 16px;
+    row-gap: 8px;
+    font-size: 24px;
+}
+
+.item__spec dt {
+    grid-column: 1;
+    font-weight: 700;
+    margin: 0 60px 0 0;
+    white-space: nowrap;
+}
+
+.item__spec dd {
+    grid-column: 2;
+    margin: 0;
+}
+
+.item__spec dd .item__categoryTag {
+    display: inline-block;
+    margin-right: 6px;
+    margin-bottom: 4px;
+}
+
+.item__categoryTag {
+    display: inline-block;
+    padding: 3px 12px;
+    border-radius: 999px;
+    border: none;
+    background: #D9D9D9;
+    font-size: 20px;
+    margin-right: 16px;
+}
+
+/* 売り切れボタン */
+.item__soldBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    background-color: #B2B2B2;
+    color: #FFFFFF;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: not-allowed;
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+/* ===== コメント一覧 ===== */
+.item__section--comments {
+    margin-top: 40px;
+}
+
+.item__commentTitle {
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0 0 24px;
+}
+
+.item__commentTitleCount {
+    color: #8a8a8a;
+}
+
+.item__comment {
+    margin-bottom: 24px;
+}
+
+
+.item__commentHeader {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 12px;
+}
+
+.item__commentIcon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: #d9d9d9;
+    border: none;
+    box-sizing: border-box;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.item__commentIconImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.item__commentUser {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.item__commentBubble {
+    background: #e9e9e9;
+    border-radius: 6px;
+    padding: 14px 20px;
+    font-size: 16px;
+}
+
+.item__noComment {
+    font-size: 14px;
+    color: #666;
+}
+
+.item__section--commentForm {
+    margin-top: 32px;
+}
+
+.item__commentFormTitle {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0 0 12px;
+}
+
+.item__commentTextarea {
+    width: 100%;
+    min-height: 220px;
+    padding: 10px 12px;
+    font-size: 24px;
+    border-radius: 4px;
+    border: 2px solid #555;
+    outline: none;
+    resize: vertical;
+    box-sizing: border-box;
+}
+
+.item__commentSubmit {
+    margin-top: 24px;
+    width: 100%;
+    height: 56px;
+    border: none;
+    border-radius: 4px;
+    background: #ff5555;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.item__commentSubmit:hover {
+    opacity: 0.9;
+}
+
+.item__error {
+    color: #e60000;
+    font-size: 24px;
+    margin-top: 4px;
+}
+
+.item__loginNotice {
+    font-size: 14px;
+}
+
+@media (max-width: 768px) {
+    .item__main {
+        flex-direction: column;
+        gap: 30px;
+        padding: 20px;
+    }
+
+    .item__info,
+    .item__imageArea {
+        max-width: 100%;
+    }
+}
