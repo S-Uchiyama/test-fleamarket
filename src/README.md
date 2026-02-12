@@ -13,11 +13,19 @@
 以下の手順で、環境構築からマイグレーションまで実行できます。
 
 1. リポジトリをクローンする
-git clone 
+```bash
+git clone https://github.com/S-Uchiyama/test-fleamarket
+```
+
 2. ルートディレクトリへ移動する
-cd 
+```bash
+cd test-fleamarket
+```
+
 3. Dockerコンテナを起動する
+```bash
 docker compose up -d --build
+```
 
 MacのM1・M2チップのPCの場合、no matching manifest for linux/arm64/v8 in the manifest list entriesのメッセージが表示されビルドができないことがあります。 エラーが発生する場合は、docker-compose.ymlファイルの「mysql」内に「platform」の項目を追加で記載してください。
 mysql:
@@ -26,13 +34,19 @@ mysql:
     environment:
 
 4. PHPコンテナに入る
+```bash
 docker compose exec php bash
+```
 
 5. Laravel依存パッケージをインストール
+```bash
 composer install
+```
 
 6. 環境変数ファイルを作成及び環境変数を追加
+```bash
 cp .env.example .env
+```
 
 ```env
 APP_URL=http://localhost
@@ -58,7 +72,9 @@ STRIPE_SECRET=sk_test_xxx
 ```
 
 7. アプリケーションキーを生成
+```bash
 php artisan key:generate
+```
 
 8. マイグレーション実行
 
@@ -80,32 +96,11 @@ php artisan storage:link
 php artisan db:seed
 ```
 
-Seeder実行対象:
-
-- `Database\\Seeders\\UserSeeder`
-- `Database\\Seeders\\CategorySeeder`
-- `Database\\Seeders\\ItemSeeder`
-
 ### ダミーユーザー
 
 - `test@example.com` / `password123`
 - `seller1@example.com` / `password123`
 - `seller2@example.com` / `password123`
-
-### 商品データ
-
-`ItemSeeder` で以下の10件を投入します。
-
-- 腕時計
-- HDD
-- 玉ねぎ3束
-- 革靴
-- ノートPC
-- マイク
-- ショルダーバッグ
-- タンブラー
-- コーヒーミル
-- メイクセット
 
 ## ER図
 
