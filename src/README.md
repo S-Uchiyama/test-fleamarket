@@ -1,0 +1,142 @@
+## 環境
+
+- PHP 8系
+- Laravel 8.75
+- MySQL 8.0.26
+- Nginx 1.21.1
+- phpMyAdmin
+- Mailhog
+- Stripe Checkout（カード/コンビニ）
+
+## 環境構築手順
+
+以下の手順で、環境構築からマイグレーションまで実行できます。
+
+1. リポジトリをクローンする
+git clone 
+2. ルートディレクトリへ移動する
+cd 
+3. Dockerコンテナを起動する
+docker compose up -d --build
+
+MacのM1・M2チップのPCの場合、no matching manifest for linux/arm64/v8 in the manifest list entriesのメッセージが表示されビルドができないことがあります。 エラーが発生する場合は、docker-compose.ymlファイルの「mysql」内に「platform」の項目を追加で記載してください。
+mysql:
+    platform: linux/x86_64(この文追加)
+    image: mysql:8.0.26
+    environment:
+
+4. PHPコンテナに入る
+docker compose exec php bash
+
+5. Laravel依存パッケージをインストール
+composer install
+
+6. 環境変数ファイルを作成及び環境変数を追加
+cp .env.example .env
+
+```env
+APP_URL=http://localhost
+
+DB_CONNECTION=mysql
+DB_HOST=mysql
+DB_PORT=3306
+DB_DATABASE=laravel_db
+DB_USERNAME=laravel_user
+DB_PASSWORD=laravel_pass
+
+MAIL_MAILER=smtp
+MAIL_HOST=mailhog
+MAIL_PORT=1025
+MAIL_USERNAME=null
+MAIL_PASSWORD=null
+MAIL_ENCRYPTION=null
+MAIL_FROM_ADDRESS=no-reply@example.com
+MAIL_FROM_NAME="coachtechフリマ"
+
+STRIPE_KEY=pk_test_xxx
+STRIPE_SECRET=sk_test_xxx
+```
+
+7. アプリケーションキーを生成
+php artisan key:generate
+
+8. マイグレーション実行
+
+```bash
+php artisan migrate
+```
+
+9. ストレージシンボリックリンク作成（画像表示用）
+
+```bash
+php artisan storage:link
+```
+
+## ダミーデータ投入
+
+以下を実行すると、ユーザー・カテゴリ・商品データを投入できます。
+
+```bash
+php artisan db:seed
+```
+
+Seeder実行対象:
+
+- `Database\\Seeders\\UserSeeder`
+- `Database\\Seeders\\CategorySeeder`
+- `Database\\Seeders\\ItemSeeder`
+
+### ダミーユーザー
+
+- `test@example.com` / `password123`
+- `seller1@example.com` / `password123`
+- `seller2@example.com` / `password123`
+
+### 商品データ
+
+`ItemSeeder` で以下の10件を投入します。
+
+- 腕時計
+- HDD
+- 玉ねぎ3束
+- 革靴
+- ノートPC
+- マイク
+- ショルダーバッグ
+- タンブラー
+- コーヒーミル
+- メイクセット
+
+## ER図
+
+```mermaid
+erDiagram
+    USERS ||--o{ ITEMS : "has many"
+    USERS ||--o{ LIKES : "has many"
+    USERS ||--o{ COMMENTS : "has many"
+    USERS ||--o{ PURCHASES : "has many"
+    ITEMS ||--o{ LIKES : "has many"
+    ITEMS ||--o{ COMMENTS : "has many"
+    ITEMS ||--|| PURCHASES : "has one"
+    ITEMS ||--o{ CATEGORY_ITEM : "has many"
+    CATEGORIES ||--o{ CATEGORY_ITEM : "has many"
+```
+
+## 画面確認URL
+
+- アプリ: `http://localhost`
+- phpMyAdmin: `http://localhost:8080`
+- Mailhog: `http://localhost:8025`
+
+## メール認証確認手順
+
+1. 会員登録を実行
+2. Mailhogで認証メールを確認
+3. メール内リンクを開く
+4. 商品一覧画面に遷移すれば認証完了
+
+## 補足（Stripe）
+
+- 購入機能は Stripe Checkout を利用
+- テストキー利用時は Stripeテストモードで検証可能
+
