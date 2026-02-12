@@ -1,0 +1,119 @@
+/* ===== auth common（login / register 共通） ===== */
+
+.auth {
+    display: flex;
+    justify-content: center;
+    padding: 80px 0 120px;
+}
+
+.auth__card {
+    width: 560px;
+    max-width: 100%;
+    text-align: center;
+}
+
+.auth__title {
+    margin: 0 0 44px;
+    font-size: 36px;
+    font-weight: 700;
+}
+
+.auth__errorMessage {
+    margin-top: 4px;
+    font-size: 24px;
+    color: #e60000;
+}
+
+/* ===== form ===== */
+
+.auth__form {
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+}
+
+.auth__field {
+    text-align: left;
+}
+
+.auth__label {
+    display: block;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.auth__input {
+    width: 100%;
+    height: 58px;
+    border: 1px solid #5F5F5F;
+    border-radius: 4px;
+    padding: 0 12px;
+    font-size: 24px;
+}
+
+/* ===== submit ===== */
+
+.auth__submit {
+    width: 100%;
+    height: 65px;
+    border: none;
+    border-radius: 5px;
+    background: #FF5555;
+    color: #fff;
+    font-size: 26px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 32px;
+}
+
+.auth__submit:hover {
+    opacity: 0.9;
+}
+
+/* ===== footer ===== */
+
+.auth__footer {
+    margin-top: 12px;
+    text-align: center;
+}
+
+.auth__link {
+    font-size: 20px;
+    color: #0073CC;
+    text-decoration: none;
+}
+
+.auth__link:hover {
+    text-decoration: underline;
+}
+
+/* ===== errors ===== */
+
+.auth__errors {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 24px;
+}
+
+.auth__error {
+    color: #e11d48;
+    font-size: 24px;
+    line-height: 1.6;
+}
+
+/* ===== responsive ===== */
+
+@media (max-width:560px) {
+    .auth {
+        padding: 60px 0 80px;
+    }
+
+    .auth__card {
+        width: 100%;
+    }
+
+    .auth__title {
+        font-size: 24px;
+    }
+}

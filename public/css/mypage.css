@@ -1,0 +1,182 @@
+.mypage {
+    padding: 26px 0 120px;
+}
+
+/* 上部（アイコン＋名前＋編集） */
+.mypage__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px 22px;
+}
+
+.mypage__user {
+    display: flex;
+    align-items: center;
+    gap: 26px;
+    padding-left: 300px;
+}
+
+.mypage__avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: #d9d9d9;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mypage__avatarImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.mypage__name {
+    font-size: 36px;
+    font-weight: 700;
+    padding-left: 58px;
+}
+
+.mypage__editBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 310px;
+    height: 59px;
+    padding: 0 20px;
+    border: 2px solid #FF5555;
+    color: #FF5555;
+    border-radius: 10px;
+    font-size: 26px;
+    font-weight: 700;
+    margin-right: 196px;
+    white-space: nowrap;
+}
+
+/* タブ */
+.mypageTabs {
+    border-bottom: 2px solid #5F5F5F;
+}
+
+.mypageTabs__inner {
+    display: flex;
+    align-items: flex-end;
+    gap: 60px;
+    height: 58px;
+    padding-left: 128px;
+}
+
+.mypageTabs__tab {
+    display: inline-flex;
+    padding: 0 6px 12px;
+    font-size: 24px;
+    font-weight: 700;
+    color: #5F5F5F;
+    text-decoration: none;
+}
+
+.mypageTabs__tab.is-active {
+    color: #FF0000;
+}
+
+/* グリッド（4列） */
+.mypageGrid {
+    padding: 60px 0 0;
+    display: grid;
+    grid-template-columns: repeat(4, 290px);
+    justify-content: start;
+    gap: 60px 60px;
+    padding-left: 70px;
+}
+
+.mypageCard {
+    display: block;
+    text-decoration: none;
+}
+
+.mypageCard__thumb {
+    width: 290px;
+    height: 290px;
+    background: #d9d9d9;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.mypageCard__thumbText {
+    font-size: 26px;
+    font-weight: 800;
+    color: #111;
+}
+
+.mypageCard__name {
+    margin-top: 12px;
+    font-size: 25px;
+    font-weight: 400;
+    color: #000000;
+}
+
+.mypageCard__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Soldバッジのスタイル */
+.card__sold {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    background-color: #EA352C;
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+    padding: 8px 20px;
+    border-radius: 4px;
+    letter-spacing: 2px;
+}
+
+/* responsive */
+@media (max-width: 1100px) {
+    .mypageGrid {
+        grid-template-columns: repeat(2, 240px);
+        padding-left: 0;
+    }
+
+    .mypageTabs__inner,
+    .mypage__user {
+        padding-left: 0;
+    }
+
+    .mypage__editBtn {
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 560px) {
+    .mypage__top {
+        flex-direction: column;
+        gap: 16px;
+        align-items: center;
+    }
+
+    .mypageGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .mypageCard__thumb {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1 / 1;
+    }
+}

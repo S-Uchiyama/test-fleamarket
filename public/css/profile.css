@@ -1,0 +1,133 @@
+.profile {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 40px 0 120px;
+    --profile-left: 120px;
+}
+
+.profile__title {
+    margin: 0 0 34px;
+    text-align: center;
+    font-size: 36px;
+    font-weight: 700;
+}
+
+.profile__form {
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+}
+
+/* 上部丸アイコン */
+.profile__avatarRow {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    padding-left: var(--profile-left);
+    margin-bottom: 12px;
+}
+
+.profile__avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: #d9d9d9;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile__avatarImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.profile__fileBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    padding: 20px 20px;
+    border: 2px solid #FF5555;
+    color: #FF5555;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+    user-select: none;
+}
+
+.profile__fileInput {
+    display: none;
+}
+
+/* 入力欄 */
+.profile__field {
+    padding-left: var(--profile-left);
+    padding-right: var(--profile-left);
+}
+
+.profile__label {
+    display: block;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.profile__input {
+    width: 100%;
+    height: 55px;
+    border: 1px solid #5F5F5F;
+    border-radius: 4px;
+    padding: 0 12px;
+    font-size: 24px;
+}
+
+.profile__error {
+    margin-top: 4px;
+    font-size: 24px;
+    color: #e60000;
+}
+
+/* ボタン */
+.profile__submit {
+    height: 60px;
+    border: none;
+    border-radius: 5px;
+    background: #FF5555;
+    color: #fff;
+    font-size: 26px;
+    font-weight: 700;
+    cursor: pointer;
+
+    width: calc(100% - (var(--profile-left) * 2));
+    margin: 22px auto 0;
+}
+
+.profile__submit:hover {
+    opacity: 0.9;
+}
+
+/* responsive */
+@media (max-width: 760px) {
+    .profile {
+        padding: 30px 0 90px;
+        --profile-left: 12px;
+    }
+
+    .profile__avatarRow {
+        justify-content: center;
+    }
+
+    .profile__field {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .profile__submit {
+        width: calc(100% - 24px);
+    }
+}
